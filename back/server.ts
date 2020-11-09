@@ -1,5 +1,3 @@
-console.log("start");
-
 const express = require("express");
 const serveIndex = require("serve-index");
 
