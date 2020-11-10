@@ -7,12 +7,29 @@
     }
 
     table {
+      border-collapse: collapse;
+      border: 0.1em solid #ccc;
       thead {
-        background: #eee;
+        background: #ccc;
       }
       th,
       td {
         padding: 0.5em;
+      }
+      tbody {
+        tr:nth-child(even) {
+          background: #eee;
+        }
+
+        td.price,
+        td.qty {
+          text-align: right;
+        }
+
+        tr:hover {
+          cursor: pointer;
+          background: #ddd;
+        }
       }
     }
   }
