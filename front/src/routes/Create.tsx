@@ -9,6 +9,7 @@ function Create() {
   const history = useHistory();
 
   const [name, setName] = React.useState("");
+  const [nameTouched, setNameTouched] = React.useState(false);
   const [price, setPrice] = React.useState(0);
   const [qty, setQty] = React.useState(1);
 
@@ -18,6 +19,8 @@ function Create() {
     articleService.addArticle({ name, price, qty });
     history.push("/stock");
   };
+
+  const isEnabled = name.length >= 6 && price > 0 && qty > 0;
 
   return (
     <main className="create">
@@ -29,7 +32,13 @@ function Create() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onBlur={() => setNameTouched(true)}
           />
+          <div className="error">
+            {nameTouched && name.length < 6 && (
+              <>Le nom doit faire au moins 6 caractères.</>
+            )}
+          </div>
         </label>
         <label>
           <div>Prix</div>
@@ -40,6 +49,7 @@ function Create() {
             value={price}
             onChange={(e) => setPrice(+e.target.value)}
           />
+          <div className="error">{price > 0 || <>Rien n'est gratuit.</>}</div>
         </label>
         <label>
           <div>Quantité</div>
@@ -50,8 +60,13 @@ function Create() {
             value={qty}
             onChange={(e) => setQty(+e.target.value)}
           />
+          <div className="error">
+            {qty > 0 || <>La quantie doit être &gt; 0.</>}
+          </div>
         </label>
-        <button className="primary">Ajouter</button>
+        <button disabled={!isEnabled} className="primary">
+          Ajouter
+        </button>
       </form>
     </main>
   );
