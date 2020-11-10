@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Article } from "../interfaces/Article";
 
 import "./Stock.scss";
+
+const articles: Article[] = [
+  { name: "Tournevis", price: 1.45, qty: 234 },
+  { name: "Tournevis Cruciforme", price: 2.5, qty: 100 },
+  { name: "Tondeuse à gazon", price: 100, qty: 15 },
+  { name: "Pince", price: 10, qty: 3 },
+];
 
 function Stock() {
   return (
@@ -22,26 +30,13 @@ function Stock() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.45€</td>
-              <td className="qty">234</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis Cruciforme</td>
-              <td className="price">11.00€</td>
-              <td className="qty">10</td>
-            </tr>
-            <tr>
-              <td className="name">Tondeuse à gazon</td>
-              <td className="price">211.00€</td>
-              <td className="qty">5</td>
-            </tr>
-            <tr>
-              <td className="name">Pince</td>
-              <td className="price">0.45€</td>
-              <td className="qty">100</td>
-            </tr>
+            {articles.map((article, i) => (
+              <tr key={i}>
+                <td className="name">{article.name}</td>
+                <td className="price">{article.price.toFixed(2)} €</td>
+                <td className="qty">{article.qty}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
