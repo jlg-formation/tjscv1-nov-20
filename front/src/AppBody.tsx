@@ -6,7 +6,7 @@ function AppBody() {
   return (
     <main>
       <h1>Gérer vos stocks efficacement !</h1>
-      <button>Voir le stock</button>
+      <button className="primary">Voir le stock</button>
     </main>
   );
 }
