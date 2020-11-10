@@ -3,19 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ArticleContext } from "./context/ArticleContext";
-import { Article } from "./interfaces/Article";
-
-const articles: Article[] = [
-  { name: "Tournevis", price: 1.45, qty: 234 },
-  { name: "Tournevis Cruciforme", price: 2.5, qty: 100 },
-  { name: "Tondeuse à gazon", price: 100, qty: 15 },
-  { name: "Pince", price: 10, qty: 3 },
-];
+import { ArticleContext, ArticleService } from "./context/ArticleContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ArticleContext.Provider value={articles}>
+    <ArticleContext.Provider value={new ArticleService()}>
       <App />
     </ArticleContext.Provider>
   </React.StrictMode>,

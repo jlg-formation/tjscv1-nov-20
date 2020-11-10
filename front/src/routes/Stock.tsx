@@ -6,7 +6,7 @@ import StockTable from "../widgets/StockTable";
 import "./Stock.scss";
 
 function Stock() {
-  const articles = useContext(ArticleContext);
+  const articleService = useContext(ArticleContext);
   return (
     <main className="stock">
       <h1>Liste des articles</h1>
@@ -16,7 +16,7 @@ function Stock() {
             <button>Ajouter</button>
           </Link>
         </nav>
-        <StockTable articles={articles} />
+        <StockTable articles={articleService.articles} />
       </div>
     </main>
   );
