@@ -1,7 +1,13 @@
 import React from "react";
 
+import "./AppFooter.scss";
+
 function AppFooter() {
-  return <footer>footer</footer>;
+  return (
+    <footer>
+      <a href="#">Mentions Légales</a>
+    </footer>
+  );
 }
 
 export default AppFooter;

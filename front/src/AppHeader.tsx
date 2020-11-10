@@ -1,5 +1,6 @@
 import React from "react";
 
+import "./AppHeader.scss";
 import logo from "./logo.svg";
 
 function AppHeader() {
