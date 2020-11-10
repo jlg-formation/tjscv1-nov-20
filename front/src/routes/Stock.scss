@@ -5,32 +5,5 @@
       width: 100%;
       padding-bottom: 1em;
     }
-
-    table {
-      border-collapse: collapse;
-      border: 0.1em solid #ccc;
-      thead {
-        background: #ccc;
-      }
-      th,
-      td {
-        padding: 0.5em;
-      }
-      tbody {
-        tr:nth-child(even) {
-          background: #eee;
-        }
-
-        td.price,
-        td.qty {
-          text-align: right;
-        }
-
-        tr:hover {
-          cursor: pointer;
-          background: #ddd;
-        }
-      }
-    }
   }
 }
