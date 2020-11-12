@@ -22,7 +22,7 @@ function StockTable(props: {
 
     setSelectedArticles(newSelectedArticles);
 
-    props.setCanSuppress(newSelectedArticles.length === 0);
+    props.setCanSuppress(newSelectedArticles.length !== 0);
   };
 
   const isSelected = (article: Article) => {
