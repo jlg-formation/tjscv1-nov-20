@@ -39,4 +39,23 @@ export class HttpArticleService extends ArticleService {
       }
     })();
   }
+
+  remove(selectedArticles: Article[]) {
+    super.remove(selectedArticles);
+    const ids = selectedArticles.map((a) => a.id);
+    (async () => {
+      try {
+        await fetch("http://localhost:3500/ws/articles", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(ids),
+        });
+        await this.refresh();
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    })();
+  }
 }
