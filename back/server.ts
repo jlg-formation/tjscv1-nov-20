@@ -15,6 +15,7 @@ const articles = [
 ] as Article[];
 
 app.use(cors());
+app.use(express.json());
 
 app.use((req, res, next) => {
   console.log("url", req.url);
@@ -23,6 +24,12 @@ app.use((req, res, next) => {
 
 app.get("/ws/articles", (req, res) => {
   res.json(articles);
+});
+
+app.post("/ws/articles", (req, res) => {
+  const article = req.body as Article;
+  articles.push(article);
+  res.status(201).json(article);
 });
 
 app.use(express.static(www));
