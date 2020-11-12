@@ -11,6 +11,7 @@ export class ArticleService {
 
   remove(selectedArticles: Article[]) {
     console.log("remove from articleService", selectedArticles);
+    this.articles = this.articles.filter((a) => !selectedArticles.includes(a));
   }
 
   save() {
