@@ -6,10 +6,11 @@ import AppBody from "./AppBody";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
 import { ArticleContext } from "./context/ArticleContext";
-import { ArticleService } from "./services/ArticleService";
+import { HttpArticleService } from "./services/HttpArticleService";
+
+const articleService = new HttpArticleService();
 
 function App() {
-  const articleService = new ArticleService();
   const [, setArticles] = React.useState(articleService.articles);
   articleService.configure(setArticles);
   return (
