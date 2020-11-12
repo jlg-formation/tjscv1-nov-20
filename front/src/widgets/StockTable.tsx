@@ -4,6 +4,21 @@ import { Article } from "../interfaces/Article";
 import "./StockTable.scss";
 
 function StockTable(props: { articles: Article[] }) {
+  const [selectedArticles, setSelectedArticles] = React.useState(
+    [] as Article[]
+  );
+  const handleClick = (article: Article) => (
+    e: React.MouseEvent<HTMLTableRowElement, MouseEvent>
+  ) => {
+    console.log("click", e, article);
+    setSelectedArticles([...selectedArticles, article]);
+  };
+
+  const isSelected = (article: Article) => {
+    console.log("isSelected");
+    return selectedArticles.includes(article) ? "selected" : "";
+  };
+
   return (
     <table className="stock-table">
       <thead>
@@ -15,7 +30,11 @@ function StockTable(props: { articles: Article[] }) {
       </thead>
       <tbody>
         {props.articles.map((article, i) => (
-          <tr key={i}>
+          <tr
+            key={i}
+            onClick={handleClick(article)}
+            className={isSelected(article)}
+          >
             <td className="name">{article.name}</td>
             <td className="price">{article.price.toFixed(2)} €</td>
             <td className="qty">{article.qty}</td>

@@ -1,8 +1,8 @@
 table.stock-table {
   border-collapse: collapse;
-  border: 0.1em solid #ccc;
+  border: 0.1em solid #bbb;
   thead {
-    background: #ccc;
+    background: #bbb;
   }
   th,
   td {
@@ -21,6 +21,10 @@ table.stock-table {
     tr:hover {
       cursor: pointer;
       background: #ddd;
+    }
+
+    tr.selected {
+      background: #ccc;
     }
   }
 }
