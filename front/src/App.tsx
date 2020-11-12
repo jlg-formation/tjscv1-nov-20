@@ -10,10 +10,10 @@ import { ArticleService } from "./services/ArticleService";
 
 function App() {
   const articleService = new ArticleService();
-  const [articles, setArticles] = React.useState(articleService.articles);
+  const [, setArticles] = React.useState(articleService.articles);
   articleService.configure(setArticles);
   return (
-    <ArticleContext.Provider value={{ articleService, articles }}>
+    <ArticleContext.Provider value={articleService}>
       <Router>
         <AppHeader />
         <AppBody />

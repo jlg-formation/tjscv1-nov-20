@@ -7,7 +7,7 @@ import StockTable from "../widgets/StockTable";
 import "./Stock.scss";
 
 function Stock() {
-  const { articleService, articles } = useContext(ArticleContext);
+  const articleService = useContext(ArticleContext);
   const [selectedArticles, setSelectedArticles] = React.useState(
     [] as Article[]
   );
@@ -31,7 +31,7 @@ function Stock() {
           )}
         </nav>
         <StockTable
-          articles={articles}
+          articles={articleService.articles}
           selectedArticles={selectedArticles}
           setSelectedArticles={setSelectedArticles}
         />

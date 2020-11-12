@@ -15,7 +15,7 @@ function Create() {
   const [qty, setQty] = React.useState(1);
   const [qtyTouched, setQtyTouched] = React.useState(false);
 
-  const { articleService } = useContext(ArticleContext);
+  const articleService = useContext(ArticleContext);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     articleService.addArticle({ name, price, qty });

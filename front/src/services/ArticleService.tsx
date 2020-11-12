@@ -20,7 +20,8 @@ export class ArticleService {
   }
 
   save() {
-    this.setArticle([...this.articles]);
+    this.articles = [...this.articles];
+    this.setArticle(this.articles);
     localStorage.setItem("articles", JSON.stringify(this.articles));
   }
 
