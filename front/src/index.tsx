@@ -3,13 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ArticleContext, ArticleService } from "./context/ArticleContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ArticleContext.Provider value={new ArticleService()}>
-      <App />
-    </ArticleContext.Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

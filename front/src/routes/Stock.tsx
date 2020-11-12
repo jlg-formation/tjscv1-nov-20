@@ -7,8 +7,7 @@ import StockTable from "../widgets/StockTable";
 import "./Stock.scss";
 
 function Stock() {
-  const articleService = useContext(ArticleContext);
-  const [canSuppress, setCanSuppress] = React.useState(false);
+  const { articleService, articles } = useContext(ArticleContext);
   const [selectedArticles, setSelectedArticles] = React.useState(
     [] as Article[]
   );
@@ -16,6 +15,7 @@ function Stock() {
   const suppress = () => {
     console.log("suppress");
     articleService.remove(selectedArticles);
+    setSelectedArticles([]);
   };
 
   return (
@@ -26,11 +26,13 @@ function Stock() {
           <Link to="/create">
             <button>Ajouter</button>
           </Link>
-          {canSuppress && <button onClick={suppress}>Supprimer</button>}
+          {selectedArticles.length !== 0 && (
+            <button onClick={suppress}>Supprimer</button>
+          )}
         </nav>
         <StockTable
-          articles={articleService.articles}
-          setCanSuppress={setCanSuppress}
+          articles={articles}
+          selectedArticles={selectedArticles}
           setSelectedArticles={setSelectedArticles}
         />
       </div>
