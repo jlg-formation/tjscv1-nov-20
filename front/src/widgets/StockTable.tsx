@@ -11,6 +11,11 @@ function StockTable(props: { articles: Article[] }) {
     e: React.MouseEvent<HTMLTableRowElement, MouseEvent>
   ) => {
     console.log("click", e, article);
+    if (selectedArticles.includes(article)) {
+      const newSelectedArticles = selectedArticles.filter((a) => a !== article);
+      setSelectedArticles(newSelectedArticles);
+      return;
+    }
     setSelectedArticles([...selectedArticles, article]);
   };
 
