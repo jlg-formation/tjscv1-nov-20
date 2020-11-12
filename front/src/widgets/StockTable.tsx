@@ -6,6 +6,7 @@ import "./StockTable.scss";
 function StockTable(props: {
   articles: Article[];
   setCanSuppress: (value: boolean) => void;
+  setSelectedArticles: (value: Article[]) => void;
 }) {
   const [selectedArticles, setSelectedArticles] = React.useState(
     [] as Article[]
@@ -21,6 +22,7 @@ function StockTable(props: {
       : (newSelectedArticles = [...selectedArticles, article]);
 
     setSelectedArticles(newSelectedArticles);
+    props.setSelectedArticles(newSelectedArticles);
 
     props.setCanSuppress(newSelectedArticles.length !== 0);
   };

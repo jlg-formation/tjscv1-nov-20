@@ -9,6 +9,10 @@ export class ArticleService {
     this.save();
   }
 
+  remove(selectedArticles: Article[]) {
+    console.log("remove from articleService", selectedArticles);
+  }
+
   save() {
     localStorage.setItem("articles", JSON.stringify(this.articles));
   }
