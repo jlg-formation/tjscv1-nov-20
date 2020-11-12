@@ -3,20 +3,26 @@ import { Article } from "../interfaces/Article";
 
 import "./StockTable.scss";
 
-function StockTable(props: { articles: Article[] }) {
+function StockTable(props: {
+  articles: Article[];
+  setCanSuppress: (value: boolean) => void;
+}) {
   const [selectedArticles, setSelectedArticles] = React.useState(
     [] as Article[]
   );
+
   const handleClick = (article: Article) => (
     e: React.MouseEvent<HTMLTableRowElement, MouseEvent>
   ) => {
     console.log("click", e, article);
-    if (selectedArticles.includes(article)) {
-      const newSelectedArticles = selectedArticles.filter((a) => a !== article);
-      setSelectedArticles(newSelectedArticles);
-      return;
-    }
-    setSelectedArticles([...selectedArticles, article]);
+    let newSelectedArticles;
+    selectedArticles.includes(article)
+      ? (newSelectedArticles = selectedArticles.filter((a) => a !== article))
+      : (newSelectedArticles = [...selectedArticles, article]);
+
+    setSelectedArticles(newSelectedArticles);
+
+    props.setCanSuppress(newSelectedArticles.length === 0);
   };
 
   const isSelected = (article: Article) => {

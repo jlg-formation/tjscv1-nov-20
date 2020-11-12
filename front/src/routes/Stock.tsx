@@ -7,6 +7,7 @@ import "./Stock.scss";
 
 function Stock() {
   const articleService = useContext(ArticleContext);
+  const [canSuppress, setCanSuppress] = React.useState(false);
   return (
     <main className="stock">
       <h1>Liste des articles</h1>
@@ -15,9 +16,12 @@ function Stock() {
           <Link to="/create">
             <button>Ajouter</button>
           </Link>
-          <button>Supprimer</button>
+          {canSuppress && <button>Supprimer</button>}
         </nav>
-        <StockTable articles={articleService.articles} />
+        <StockTable
+          articles={articleService.articles}
+          setCanSuppress={setCanSuppress}
+        />
       </div>
     </main>
   );
