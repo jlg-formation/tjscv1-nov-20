@@ -11,7 +11,9 @@ function Create() {
   const [name, setName] = React.useState("");
   const [nameTouched, setNameTouched] = React.useState(false);
   const [price, setPrice] = React.useState(0);
+  const [priceTouched, setPriceTouched] = React.useState(false);
   const [qty, setQty] = React.useState(1);
+  const [qtyTouched, setQtyTouched] = React.useState(false);
 
   const articleService = useContext(ArticleContext);
   const handleSubmit = (e: React.FormEvent) => {
@@ -48,8 +50,11 @@ function Create() {
             step="0.01"
             value={price}
             onChange={(e) => setPrice(+e.target.value)}
+            onBlur={() => setPriceTouched(true)}
           />
-          <div className="error">{price > 0 || <>Rien n'est gratuit.</>}</div>
+          <div className="error">
+            {priceTouched && (price > 0 || <>Rien n'est gratuit.</>)}
+          </div>
         </label>
         <label>
           <div>Quantité</div>
@@ -59,9 +64,10 @@ function Create() {
             step="1"
             value={qty}
             onChange={(e) => setQty(+e.target.value)}
+            onBlur={() => setQtyTouched(true)}
           />
           <div className="error">
-            {qty > 0 || <>La quantie doit être &gt; 0.</>}
+            {qtyTouched && (qty > 0 || <>La quantie doit être &gt; 0.</>)}
           </div>
         </label>
         <button disabled={!isEnabled} className="primary">
