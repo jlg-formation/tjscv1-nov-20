@@ -14,7 +14,7 @@ export class HttpArticleService extends ArticleService {
       const response = await fetch("http://localhost:3500/ws/articles");
       const json = await response.json();
       this.articles = json as Article[];
-      // this.save();
+      this.save();
     } catch (error) {
       console.log("error: ", error);
       this.articles = [];
