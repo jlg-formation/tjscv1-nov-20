@@ -37,9 +37,9 @@ function StockTable(props: {
         </tr>
       </thead>
       <tbody>
-        {props.articles.map((article, i) => (
+        {props.articles.map((article) => (
           <tr
-            key={i}
+            key={article.id}
             onClick={handleClick(article)}
             className={isSelected(article)}
           >
