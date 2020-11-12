@@ -23,7 +23,6 @@ export class HttpArticleService extends ArticleService {
   }
 
   addArticle(article: Article) {
-    super.addArticle(article);
     (async () => {
       try {
         await fetch("http://localhost:3500/ws/articles", {
